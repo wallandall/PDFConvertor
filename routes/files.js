@@ -1,9 +1,11 @@
 const express = require('express');
 
-const { getHTML, createPDF } = require('../controllers/files');
+const { createPDFile, createBufferedPDF } = require('../controllers/files');
 
 const router = express.Router();
 
-router.route('/').get(getHTML).post(createPDF);
+router.route('/');
+router.route('/file').post(createPDFile);
+router.route('/buffer').post(createBufferedPDF);
 
 module.exports = router;

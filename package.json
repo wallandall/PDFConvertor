@@ -4,7 +4,7 @@
   "description": "Creates a PDF from an HTML File",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=production node server",
+    "start": "node server",
     "dev": "nodemon server"
   },
   "author": "Christopher Wall",
@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "html-pdf": "^2.2.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
