@@ -3,16 +3,6 @@ FROM node:15.5-alpine
 EXPOSE 5000
 ENV NODE_ENV=production
 
-#RUN apk update
-#RUN apk add --no-cache fontconfig curl
-#RUN mkdir -p /usr/share
-#RUN mkdir -p /usr/share
-#RUN cd /usr/share
-#RUN curl -L https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/2.11/phantomjs-alpine-x86_64.tar.bz2 | tar xj
-#RUN ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs
-
-
-
 
 ENV PHANTOMJS_VERSION=2.1.1
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
@@ -28,13 +18,12 @@ RUN apk update && apk add --no-cache fontconfig curl curl-dev && \
 
 
 #############################
-RUN apk add --no-cache tini
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --only=production && npm cache clean --force
 
 COPY . .
-ENTRYPOINT ["tini", "--"]
+
 
 CMD ["npm", "start"]
 
