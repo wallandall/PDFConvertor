@@ -12,10 +12,10 @@ const files = require('./routes/files');
 const app = express();
 
 //Body Parser
-app.use(express.json());
+app.use(express.json({ limit: '500mb' }));
 app.use('/pdf', express.static('PDF'));
 
-//Dev Logging middleware
+//Dev Logging middlewaregitgithu
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
